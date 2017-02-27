@@ -22,6 +22,7 @@ namespace Calculator2
         public Calculator()
 
         {
+            //
 
             var layout = new Grid();
 
