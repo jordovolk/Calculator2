@@ -34,6 +34,8 @@ namespace Calculator2
         Button bEquals;
         Button bstyle1;
         Button bstyle2;
+        Boolean style1;
+        Boolean style2;
         
        
 
@@ -83,15 +85,58 @@ namespace Calculator2
                   }
               }
           }
+      },
+
+                {
+             "buttonStyle2",
+          new Style(typeof(Button))
+          {
+              Setters = {
+                  new Setter {
+                      Property = View.HorizontalOptionsProperty,
+                          Value = LayoutOptions.Center
+                  },
+                  new Setter {
+                      Property = View.VerticalOptionsProperty,
+                          Value = LayoutOptions.CenterAndExpand
+                  },
+                  new Setter {
+                      Property = Button.BorderWidthProperty,
+                          Value = 3
+                  },
+                  new Setter {
+                      Property = Button.TextColorProperty,
+                          Value = Color.Blue
+                  },
+                  new Setter {
+                      Property = Button.FontSizeProperty,
+                          Value = Device.GetNamedSize(NamedSize.Large, typeof(Button))
+                  },
+                  new Setter {
+                      Property = VisualElement.BackgroundColorProperty,
+                          Value = Device.OnPlatform(Color.Default,
+                              Color.FromRgb(0x40, 0x40, 0x40),
+
+                              Color.Default)
+                  },
+                  new Setter {
+                      Property = Button.BorderColorProperty,
+                          Value = Device.OnPlatform(Color.Default,
+                              Color.White,
+                              Color.Black)
+                  }
+              }
+          }
       }
-  };
-
-            //
+                };
 
 
-            //
+        //
 
-             layout = new Grid();
+
+        //
+
+        layout = new Grid();
 
             layout.VerticalOptions = LayoutOptions.CenterAndExpand;
             layout.HorizontalOptions = LayoutOptions.CenterAndExpand;
@@ -175,9 +220,9 @@ namespace Calculator2
 
              bEquals = new Button { Text = "=", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-             bNegative = new Button { Text = "NEG", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
+            bNegative = new Button { Text = "NEG", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center, FontSize = 12 };
 
-             bstyle1 = new Button { Text = "Style 1", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
+             bstyle1 = new Button { Text = "Change Style", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center, FontSize = 12 };
 
              bstyle2 = new Button { Text = "Style 2", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
@@ -360,12 +405,18 @@ namespace Calculator2
 
             bNegative.IsEnabled = true;
 
+            changetoStyle1();
+
+
+
+            
 
 
 
 
 
-          
+
+
 
 
 
@@ -373,8 +424,7 @@ namespace Calculator2
 
         }
 
-
-        void OnStyle1ButtonClicked(object sender, EventArgs e)
+        void changetoStyle1()
         {
             bNegative.Style = (Style)Resources["buttonStyle1"];
             bClear.Style = (Style)Resources["buttonStyle1"];
@@ -394,6 +444,49 @@ namespace Calculator2
             b8.Style = (Style)Resources["buttonStyle1"];
             b9.Style = (Style)Resources["buttonStyle1"];
             bstyle1.Style = (Style)Resources["buttonStyle1"];
+            style1 = true;
+            style2 = false;
+        }
+
+        void changetoStyle2()
+        {
+            bNegative.Style = (Style)Resources["buttonStyle2"];
+            bClear.Style = (Style)Resources["buttonStyle2"];
+            bEquals.Style = (Style)Resources["buttonStyle2"];
+            bAdd.Style = (Style)Resources["buttonStyle2"];
+            bSubtract.Style = (Style)Resources["buttonStyle2"];
+            bMultiply.Style = (Style)Resources["buttonStyle2"];
+            bDivide.Style = (Style)Resources["buttonStyle2"];
+            b0.Style = (Style)Resources["buttonStyle2"];
+            b1.Style = (Style)Resources["buttonStyle2"];
+            b2.Style = (Style)Resources["buttonStyle2"];
+            b3.Style = (Style)Resources["buttonStyle2"];
+            b4.Style = (Style)Resources["buttonStyle2"];
+            b5.Style = (Style)Resources["buttonStyle2"];
+            b6.Style = (Style)Resources["buttonStyle2"];
+            b7.Style = (Style)Resources["buttonStyle2"];
+            b8.Style = (Style)Resources["buttonStyle2"];
+            b9.Style = (Style)Resources["buttonStyle2"];
+            bstyle1.Style = (Style)Resources["buttonStyle2"];
+            style1 = false; 
+            style2 = true;
+        }
+
+
+        void OnStyle1ButtonClicked(object sender, EventArgs e)
+        {
+            if (style1 == true)
+            {
+                changetoStyle2();
+            }
+            else
+            {
+                changetoStyle1();
+            }
+
+            
+
+            
 
 
 
