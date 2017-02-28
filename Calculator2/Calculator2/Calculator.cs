@@ -14,6 +14,28 @@ namespace Calculator2
         float num1, ans;
         int count;
         Int32 negativevalueassigned = 0;
+        Grid layout;
+        Button bNegative;
+        Button b0;
+        Button b1;
+        Button b2;
+        Button b3;
+        Button b4;
+        Button b5;
+        Button b6;
+        Button b7;
+        Button b8;
+        Button b9;
+        Button bAdd;
+        Button bSubtract;
+        Button bMultiply;
+        Button bDivide;
+        Button bClear;
+        Button bEquals;
+        Button bstyle1;
+        Button bstyle2;
+        Boolean style1;
+        Boolean style2;
         
        
 
@@ -22,9 +44,102 @@ namespace Calculator2
         public Calculator()
 
         {
-            //
 
-            var layout = new Grid();
+            Resources = new ResourceDictionary {
+      {
+          "buttonStyle1",
+          new Style(typeof(Button)) {
+              Setters = {
+                  new Setter {
+                      Property = View.HorizontalOptionsProperty,
+                          Value = LayoutOptions.Center
+                  },
+                  new Setter {
+                      Property = View.VerticalOptionsProperty,
+                          Value = LayoutOptions.CenterAndExpand
+                  },
+                  new Setter {
+                      Property = Button.BorderWidthProperty,
+                          Value = 3
+                  },
+                  new Setter {
+                      Property = Button.TextColorProperty,
+                          Value = Color.Red
+                  },
+                  new Setter {
+                      Property = Button.FontSizeProperty,
+                          Value = Device.GetNamedSize(NamedSize.Large, typeof(Button))
+                  },
+                  new Setter {
+                      Property = VisualElement.BackgroundColorProperty,
+                          Value = Device.OnPlatform(Color.Default,
+                              Color.FromRgb(0x40, 0x40, 0x40),
+
+                              Color.Default)
+                  },
+                  new Setter {
+                      Property = Button.BorderColorProperty,
+                          Value = Device.OnPlatform(Color.Default,
+                              Color.White,
+                              Color.Black)
+                  }
+              }
+          }
+      },
+
+                {
+             "buttonStyle2",
+          new Style(typeof(Button))
+          {
+              Setters = {
+                  new Setter {
+                      Property = View.HorizontalOptionsProperty,
+                          Value = LayoutOptions.Center
+                  },
+                  new Setter {
+                      Property = View.VerticalOptionsProperty,
+                          Value = LayoutOptions.CenterAndExpand
+                  },
+                  new Setter {
+                      Property = Button.BorderWidthProperty,
+                          Value = 3
+                  },
+                  new Setter {
+                      Property = Button.TextColorProperty,
+                          Value = Color.Blue
+                  },
+                  new Setter {
+                      Property = Button.FontSizeProperty,
+                          Value = Device.GetNamedSize(NamedSize.Large, typeof(Button))
+                  },
+                  new Setter {
+                      Property = VisualElement.BackgroundColorProperty,
+                          Value = Device.OnPlatform(Color.Default,
+                              Color.FromRgb(0x40, 0x40, 0x40),
+
+                              Color.Default)
+                  },
+                  new Setter {
+                      Property = Button.BorderColorProperty,
+                          Value = Device.OnPlatform(Color.Default,
+                              Color.White,
+                              Color.Black)
+                  }
+              }
+          }
+      }
+                };
+
+
+        //
+
+
+        //
+
+        layout = new Grid();
+
+            layout.VerticalOptions = LayoutOptions.CenterAndExpand;
+            layout.HorizontalOptions = LayoutOptions.CenterAndExpand;
 
 
 
@@ -71,40 +186,45 @@ namespace Calculator2
 
 
 
-            var b0 = new Button { Text = "0" };
+             b0 = new Button { Text = "0", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center};
 
-            var b1 = new Button { Text = "1" };
+            
 
-            var b2 = new Button { Text = "2" };
+             b1 = new Button { Text = "1", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var b3 = new Button { Text = "3" };
+             b2 = new Button { Text = "2", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var b4 = new Button { Text = "4" };
+             b3 = new Button { Text = "3", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var b5 = new Button { Text = "5" };
+             b4 = new Button { Text = "4", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var b6 = new Button { Text = "6" };
+             b5 = new Button { Text = "5", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var b7 = new Button { Text = "7" };
+             b6 = new Button { Text = "6", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var b8 = new Button { Text = "8" };
+             b7 = new Button { Text = "7", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var b9 = new Button { Text = "9" };
+             b8 = new Button { Text = "8", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var bMultiply = new Button { Text = "X" };
+             b9 = new Button { Text = "9", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var bDivide = new Button { Text = "/" };
+             bMultiply = new Button { Text = "X", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var bAdd = new Button { Text = "+" };
+             bDivide = new Button { Text = "/", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var bSubtract = new Button { Text = "-" };
+             bAdd = new Button { Text = "+", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var bClear = new Button { Text = "C" };
+             bSubtract = new Button { Text = "-", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var bEquals = new Button { Text = "=" };
+             bClear = new Button { Text = "C", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
-            var bNegative = new Button { Text = "NEG" };
+             bEquals = new Button { Text = "=", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
+            bNegative = new Button { Text = "NEG", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center, FontSize = 12 };
+
+             bstyle1 = new Button { Text = "Change Style", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center, FontSize = 12 };
+
+             bstyle2 = new Button { Text = "Style 2", VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Center };
 
 
             //output
@@ -143,6 +263,12 @@ namespace Calculator2
             Grid.SetColumn(bEquals, 2);
 
             Grid.SetColumn(bClear, 3);
+
+            //style 1 button
+            Grid.SetColumn(bstyle1, 2);
+            Grid.SetRow(bstyle1, 0);
+            Grid.SetColumn(bstyle2, 1);
+            Grid.SetRow(bstyle2, 0);
             
 
 
@@ -234,6 +360,8 @@ namespace Calculator2
 
             layout.Children.Add(bMultiply);
             layout.Children.Add(bNegative);
+            layout.Children.Add(bstyle1);
+            //layout.Children.Add(bstyle2);
 
 
 
@@ -273,18 +401,101 @@ namespace Calculator2
 
             bNegative.Clicked += OnNegativeButtonClicked;
 
+            bstyle1.Clicked += OnStyle1ButtonClicked;
+
             bNegative.IsEnabled = true;
 
+            changetoStyle1();
+
+
+
+            
 
 
 
 
 
-          
 
 
 
 
+
+
+
+        }
+
+        void changetoStyle1()
+        {
+            bNegative.Style = (Style)Resources["buttonStyle1"];
+            bClear.Style = (Style)Resources["buttonStyle1"];
+            bEquals.Style = (Style)Resources["buttonStyle1"];
+            bAdd.Style = (Style)Resources["buttonStyle1"];
+            bSubtract.Style = (Style)Resources["buttonStyle1"];
+            bMultiply.Style = (Style)Resources["buttonStyle1"];
+            bDivide.Style = (Style)Resources["buttonStyle1"];
+            b0.Style = (Style)Resources["buttonStyle1"];
+            b1.Style = (Style)Resources["buttonStyle1"];
+            b2.Style = (Style)Resources["buttonStyle1"];
+            b3.Style = (Style)Resources["buttonStyle1"];
+            b4.Style = (Style)Resources["buttonStyle1"];
+            b5.Style = (Style)Resources["buttonStyle1"];
+            b6.Style = (Style)Resources["buttonStyle1"];
+            b7.Style = (Style)Resources["buttonStyle1"];
+            b8.Style = (Style)Resources["buttonStyle1"];
+            b9.Style = (Style)Resources["buttonStyle1"];
+            bstyle1.Style = (Style)Resources["buttonStyle1"];
+            style1 = true;
+            style2 = false;
+        }
+
+        void changetoStyle2()
+        {
+            bNegative.Style = (Style)Resources["buttonStyle2"];
+            bClear.Style = (Style)Resources["buttonStyle2"];
+            bEquals.Style = (Style)Resources["buttonStyle2"];
+            bAdd.Style = (Style)Resources["buttonStyle2"];
+            bSubtract.Style = (Style)Resources["buttonStyle2"];
+            bMultiply.Style = (Style)Resources["buttonStyle2"];
+            bDivide.Style = (Style)Resources["buttonStyle2"];
+            b0.Style = (Style)Resources["buttonStyle2"];
+            b1.Style = (Style)Resources["buttonStyle2"];
+            b2.Style = (Style)Resources["buttonStyle2"];
+            b3.Style = (Style)Resources["buttonStyle2"];
+            b4.Style = (Style)Resources["buttonStyle2"];
+            b5.Style = (Style)Resources["buttonStyle2"];
+            b6.Style = (Style)Resources["buttonStyle2"];
+            b7.Style = (Style)Resources["buttonStyle2"];
+            b8.Style = (Style)Resources["buttonStyle2"];
+            b9.Style = (Style)Resources["buttonStyle2"];
+            bstyle1.Style = (Style)Resources["buttonStyle2"];
+            style1 = false; 
+            style2 = true;
+        }
+
+
+        void OnStyle1ButtonClicked(object sender, EventArgs e)
+        {
+            if (style1 == true)
+            {
+                changetoStyle2();
+            }
+            else
+            {
+                changetoStyle1();
+            }
+
+            
+
+            
+
+
+
+
+
+        }
+
+        void OnStyle2ButtonClicked(object sender, EventArgs e)
+        {
 
         }
 
